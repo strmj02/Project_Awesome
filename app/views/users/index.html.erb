@@ -1,5 +1,11 @@
 <h1>User List</h1>
 
+<style>
+   body {
+      background-color: lightblue;
+   }
+</style>
+
 <% @users.each do |user| %>
    <h2><%= link_to user.name, user %></h2>
 <% end %>
