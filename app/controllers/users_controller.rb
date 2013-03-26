@@ -20,10 +20,13 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       
       if @user.save
-         redirect_to users_path, :notice => "User was saved"
+        flash[:status] => TRUE
+        flash[:alert] => 'Congradulations! you have successfully registered.'
       else
          render "new"
       end
+      
+       redirect_to register_path
    end
 
    def new
