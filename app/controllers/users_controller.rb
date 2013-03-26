@@ -23,7 +23,8 @@ class UsersController < ApplicationController
         flash[:status] => TRUE
         flash[:alert] => 'Congradulations! you have successfully registered.'
       else
-         render "new"
+        flash[:status] => FALSE
+        flash[:alert] => @user.errors.full_messages
       end
       
        redirect_to register_path
