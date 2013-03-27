@@ -1,20 +1,33 @@
-<h1>Add a New User</h1>
+<h1>Register</h1>
 
-<%= form_for @user do |f| %>
-   <p>
-      <%= f.label :name %><br />
-      <%= f.text_field :name %>
-   </p>
-   <p>
-      <%= f.label :password %><br />
-      <%= f.text_field :password %>
-   </p>
-   <p>
-      <%= f.label :profile %><br />
-      <%= f.text_area :profile %>
-   </p>
-   <p>
-      <%= f.submit "Submit" %>
-   </p>
-
+<div>
+<% if flash[:status] == TRUE %>
+    <p><%= flash[:alert] %></p>
+<% elsif flash[:status] == FALSE %>
+    <% flash[:alert].each do |error| %>
+      <p><%= error %></p>
+    <% end %>
+<% end %>
+</div>
+            
+<%= form_for @user do |user| %>
+   <div>
+      <%= user.lable(:name, "Name")%>
+      <%= user.text_field :name %>
+   </div>
+   <div>
+      <%= user.lable(:password, "Password")%>
+      <%= user.text_field :password %>
+   </div>
+   <div>
+      <%= user.lable(:password_confirmation, "Confirm Password")%>
+      <%= user.text_field :password_confirmation %>
+   </div>
+   <div>
+      <%= user.lable(:email, "email")%>
+      <%= user.text_field :email %>
+   </div>
+   <div>
+      <%= submit_tag "Register" %>
+   </div>
 <% end %>
